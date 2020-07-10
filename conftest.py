@@ -8,6 +8,7 @@ from pages.product_card import ProductCardPage
 from pages.login import LoginPage
 from pages.login_admin import LoginAdminPage
 from pages.products_table import ProductsTablePage
+from pages.upload_file_mozilla_page import UploadFileMozillaPage
 
 
 def driver_factory(browser):
@@ -81,4 +82,11 @@ def products_table_page(browser):
     page.go_to(url="http://localhost//admin/")
     page.login('user', 'bitnami1')
     page.open_products_table()
+    return page
+
+
+@pytest.fixture()
+def upload_file_mozilla_page(browser):
+    page = UploadFileMozillaPage(browser)
+    page.go_to(url="https://developer.mozilla.org/ru/docs/Web/HTML/Element/Input/file")
     return page
